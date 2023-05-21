@@ -1,6 +1,5 @@
 package au.davidwrz.quizapp;
 
-import au.davidwrz.quizapp.model.Quiz;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

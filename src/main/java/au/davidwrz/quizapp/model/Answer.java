@@ -1,31 +1,31 @@
 package au.davidwrz.quizapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public
 class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    private Integer answer;
+    private String content;
+    private boolean correct;
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
 
     public Answer() {
-    }
-
-    public Answer(Integer answer) {
-        this.answer = answer;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getAnswer() {
-        return answer;
+    public String getContent() {
+        return content;
+    }
+
+    public boolean isCorrect() {
+        return correct;
     }
 }
