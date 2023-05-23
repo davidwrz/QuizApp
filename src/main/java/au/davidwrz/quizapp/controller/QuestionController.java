@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/quizzes")
-class QuizController {
+@RequestMapping("api/v1/questions")
+class QuestionController {
 
     private final QuestionService service;
 
-    public QuizController(QuestionService service) {
+    public QuestionController(QuestionService service) {
         this.service = service;
     }
 

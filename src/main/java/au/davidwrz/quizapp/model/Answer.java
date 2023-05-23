@@ -3,7 +3,7 @@ package au.davidwrz.quizapp.model;
 import jakarta.persistence.*;
 
 @Entity
-class Answer {
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,15 @@ class Answer {
     public Answer() {
     }
 
+    private Answer(String content, boolean correct) {
+        this.content = content;
+        this.correct = correct;
+    }
+
+    public static Answer of(String content, boolean correct) {
+        return new Answer(content, correct);
+    }
+
     public Integer getId() {
         return id;
     }
@@ -27,5 +36,9 @@ class Answer {
 
     public boolean isCorrect() {
         return correct;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

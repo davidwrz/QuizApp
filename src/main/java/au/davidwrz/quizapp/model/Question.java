@@ -27,13 +27,16 @@ public class Question {
         return content;
     }
 
-    private Question(String content, List<Answer> answers) {
-        this.content = content;
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
 
-    static Question of(String content, List<Answer> answers) {
-        return new Question(content,answers);
+    private Question(String content) {
+        this.content = content;
+    }
+
+    public static Question of(String content) {
+        return new Question(content);
     }
 
     public List<String> getAnswers() {
@@ -41,4 +44,6 @@ public class Question {
                 .map(Answer::getContent)
                 .toList();
     }
+
+
 }

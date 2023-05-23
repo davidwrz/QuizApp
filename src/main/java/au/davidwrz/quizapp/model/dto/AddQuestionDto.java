@@ -22,6 +22,6 @@ public class AddQuestionDto {
         return answers;
     }
 
-    private record AnswerRequestDto(String answer, boolean correct) {
+    public record AnswerRequestDto(String answer, boolean correct) {
     }
 }
