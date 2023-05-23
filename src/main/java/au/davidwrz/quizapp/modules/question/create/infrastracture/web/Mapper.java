@@ -1,9 +1,8 @@
-package au.davidwrz.quizapp.service.mapper;
+package au.davidwrz.quizapp.modules.question.create.infrastracture.web;
 
-import au.davidwrz.quizapp.model.Answer;
-import au.davidwrz.quizapp.model.Question;
-import au.davidwrz.quizapp.model.dto.AddQuestionDto;
-import au.davidwrz.quizapp.model.dto.GetQuestionDto;
+import au.davidwrz.quizapp.modules.question.create.domain.Answer;
+import au.davidwrz.quizapp.modules.question.create.domain.Question;
+import au.davidwrz.quizapp.utils.torefactor.GetQuestionDto;
 import org.springframework.stereotype.Service;
 
 @Service

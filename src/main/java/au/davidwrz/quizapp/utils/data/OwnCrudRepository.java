@@ -1,4 +1,4 @@
-package au.davidwrz.quizapp.utils;
+package au.davidwrz.quizapp.utils.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

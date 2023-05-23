@@ -1,4 +1,4 @@
-package au.davidwrz.quizapp.model.dto;
+package au.davidwrz.quizapp.modules.question.create.infrastracture.web;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

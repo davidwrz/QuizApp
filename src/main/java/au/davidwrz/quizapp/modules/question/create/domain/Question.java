@@ -1,4 +1,4 @@
-package au.davidwrz.quizapp.model;
+package au.davidwrz.quizapp.modules.question.create.domain;
 
 import jakarta.persistence.*;
 

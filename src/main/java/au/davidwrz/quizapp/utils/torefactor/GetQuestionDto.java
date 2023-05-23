@@ -1,4 +1,4 @@
-package au.davidwrz.quizapp.model.dto;
+package au.davidwrz.quizapp.utils.torefactor;
 
 import java.util.List;
 
