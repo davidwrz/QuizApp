@@ -12,16 +12,16 @@ public class AddQuestionDto {
     @NotBlank
     private String content;
     @NotNull
-    private List<AnswerRequestDto> answers;
+    private List<AddAnswerDto> answers;
 
     public String getContent() {
         return content;
     }
 
-    public List<AnswerRequestDto> getAnswers() {
+    public List<AddAnswerDto> getAnswers() {
         return answers;
     }
 
-    public record AnswerRequestDto(String answer, boolean correct) {
+    public record AddAnswerDto(String answer, boolean correct) {
     }
 }
