@@ -38,12 +38,4 @@ public class Question {
     public static Question of(String content) {
         return new Question(content);
     }
-
-    public List<String> getAnswers() {
-        return answers.stream()
-                .map(Answer::getContent)
-                .toList();
-    }
-
-
 }

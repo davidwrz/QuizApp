@@ -1,23 +1,16 @@
-package au.davidwrz.quizapp.modules.question.create.infrastracture.web;
+package au.davidwrz.quizapp.modules.question.create.application;
 
-import au.davidwrz.quizapp.modules.question.create.domain.Answer;
 import au.davidwrz.quizapp.modules.question.create.domain.Question;
-import au.davidwrz.quizapp.modules.question.delete.infrastracture.web.Mapper;
-import au.davidwrz.quizapp.utils.torefactor.GetQuestionDto;
+import au.davidwrz.quizapp.modules.question.create.infrastracture.web.AddQuestionDto;
+import au.davidwrz.quizapp.utils.mapper.DtoMapper;
+import au.davidwrz.quizapp.utils.mapper.EntityMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AddQuestionDtoMapper implements Mapper<> {
+class AddQuestionDtoMapper implements EntityMapper<Question,AddQuestionDto> {
 
-    public GetQuestionDto toResponseDto(Question question) {
-        return GetQuestionDto.of(question.getContent(), question.getAnswers());
-    }
-
-    public Question toQuestionEntity(AddQuestionDto questionDto) {
-        return Question.of(questionDto.getContent());
-    }
-
-    public Answer toAnswerEntity(AddQuestionDto.AnswerRequestDto answerRequestDto) {
-        return Answer.of(answerRequestDto.answer(), answerRequestDto.correct());
+    @Override
+    public Question toEntity(AddQuestionDto addQuestionDto) {
+        return Question.of(addQuestionDto.getContent());
     }
 }

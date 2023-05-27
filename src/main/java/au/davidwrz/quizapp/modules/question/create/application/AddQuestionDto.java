@@ -1,4 +1,4 @@
-package au.davidwrz.quizapp.modules.question.create.infrastracture.web;
+package au.davidwrz.quizapp.modules.question.create.application;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor
-public class AddQuestionDto {
+class AddQuestionDto {
 
     @NotBlank
     private String content;
