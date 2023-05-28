@@ -1,49 +1,24 @@
-package au.davidwrz.quizapp.modules.question.create.domain;
+package au.davidwrz.quizapp.modules.question.answer.domain;
 
-import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
 public class Question {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String content;
-    @OneToMany(
-            mappedBy = "question",
-            cascade = CascadeType.REMOVE)
-    private List<Answer> answers;
+    private final String content;
+    private final List<Answer> answers;
 
-    public Question() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setAnswers(List<Answer> answers) {
+    private Question(String content, List<Answer> answers) {
+        this.content = content;
         this.answers = answers;
     }
 
-    private Question(String content) {
-        this.content = content;
+    public static Question of(String content, List<Answer> answers) {
+        return new Question(content, answers);
     }
 
-    public static Question of(String content) {
-        return new Question(content);
+    public List<Answer> getAnswers() {
+        return answers;
     }
-
-    public List<String> getAnswers() {
-        return answers.stream()
-                .map(Answer::getContent)
-                .toList();
-    }
-
 
 }

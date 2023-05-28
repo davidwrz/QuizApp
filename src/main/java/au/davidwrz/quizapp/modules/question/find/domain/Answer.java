@@ -1,9 +1,20 @@
-package au.davidwrz.quizapp.modules.question.answer.domain;
+package au.davidwrz.quizapp.modules.question.find.domain;
 
+import au.davidwrz.quizapp.modules.question.create.domain.Question;
+import jakarta.persistence.*;
+
+@Entity
 public class Answer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     private String content;
     private boolean correct;
+    @ManyToOne
+    @JoinColumn(name = "question_id")
+    private Question question;
+
     public Answer() {
     }
 
@@ -16,11 +27,4 @@ public class Answer {
         return new Answer(content, correct);
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public boolean isCorrect() {
-        return correct;
-    }
 }

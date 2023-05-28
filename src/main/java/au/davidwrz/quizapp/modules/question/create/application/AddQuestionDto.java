@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 
 @AllArgsConstructor
-class AddQuestionDto {
+public class AddQuestionDto {
 
     @NotBlank
     private String content;

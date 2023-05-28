@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class QuestionFacade {
+public class CreateQuestionFacade {
 
     private final RepositoryGateway repositoryGateway;
     private final AddQuestionDtoMapper addQuestionDtoMapper;
     private final AddAnswerDtoMapper addAnswerDtoMapper;
 
-    public QuestionFacade(
+    public CreateQuestionFacade(
             RepositoryGateway repositoryGateway,
             AddQuestionDtoMapper addQuestionDtoMapper,
             AddAnswerDtoMapper addAnswerDtoMapper) {

@@ -1,27 +1,23 @@
 package au.davidwrz.quizapp.modules.question.answer.infrastracture.web;
 
-import au.davidwrz.quizapp.modules.question.answer.application.QuestionFacade;
-import org.springframework.http.HttpStatus;
+import au.davidwrz.quizapp.modules.question.answer.application.AnswerQuestionDto;
+import au.davidwrz.quizapp.modules.question.answer.application.AnswerQuestionFacade;
+import au.davidwrz.quizapp.modules.question.answer.application.AnswerResult;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/questions")
-class AddQuestionController {
+class AnswerQuestionController {
 
-    private final QuestionFacade service;
+    private final AnswerQuestionFacade service;
 
-    public AddQuestionController(QuestionFacade service) {
+    public AnswerQuestionController(AnswerQuestionFacade service) {
         this.service = service;
     }
 
-    @PostMapping
-    ResponseEntity<?> addQuestion(@RequestBody AddQuestionDto addQuestionDto) {
-        service.add(addQuestionDto);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    @PostMapping("{id}/solve")
+    ResponseEntity<AnswerResult> answerQuestion(@PathVariable Integer id, @RequestBody AnswerQuestionDto answerQuestionDto) {
+        return ResponseEntity.ok(service.answer(id, answerQuestionDto));
     }
-    
 }

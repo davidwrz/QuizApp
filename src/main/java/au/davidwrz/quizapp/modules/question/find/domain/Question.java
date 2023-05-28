@@ -1,5 +1,7 @@
-package au.davidwrz.quizapp.modules.question.delete.domain;
+package au.davidwrz.quizapp.modules.question.find.domain;
 
+
+import au.davidwrz.quizapp.modules.question.create.domain.Answer;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,6 +12,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String content;
     @OneToMany(
             mappedBy = "question",
             cascade = CascadeType.REMOVE)
@@ -22,8 +25,11 @@ public class Question {
         return id;
     }
 
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
+    public String getContent() {
+        return content;
     }
 
+    public List<Answer> getAnswers() {
+        return answers;
+    }
 }

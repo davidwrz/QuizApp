@@ -1,7 +1,7 @@
 package au.davidwrz.quizapp.modules.question.create.infrastracture.web;
 
 import au.davidwrz.quizapp.modules.question.create.application.AddQuestionDto;
-import au.davidwrz.quizapp.modules.question.create.application.QuestionFacade;
+import au.davidwrz.quizapp.modules.question.create.application.CreateQuestionFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/questions")
 class AddQuestionController {
 
-    private final QuestionFacade service;
+    private final CreateQuestionFacade service;
 
-    public AddQuestionController(QuestionFacade service) {
+    public AddQuestionController(CreateQuestionFacade service) {
         this.service = service;
     }
 

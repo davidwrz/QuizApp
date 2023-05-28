@@ -1,6 +1,6 @@
-package au.davidwrz.quizapp.modules.question.create.infrastracture.db;
+package au.davidwrz.quizapp.modules.question.answer.infrastracture.db;
 
-import au.davidwrz.quizapp.modules.question.create.domain.Question;
+import au.davidwrz.quizapp.modules.question.answer.domain.Question;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
