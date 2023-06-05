@@ -1,6 +1,5 @@
 package au.davidwrz.quizapp.modules.question.answer.domain;
 
-
 import java.util.List;
 
 public class Question {
@@ -20,5 +19,4 @@ public class Question {
     public List<Answer> getAnswers() {
         return answers;
     }
-
 }

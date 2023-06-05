@@ -3,6 +3,7 @@ package au.davidwrz.quizapp.modules.question.create.application;
 import au.davidwrz.quizapp.modules.question.create.domain.Answer;
 import au.davidwrz.quizapp.modules.question.create.domain.Question;
 import au.davidwrz.quizapp.modules.question.create.infrastracture.db.RepositoryGateway;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class CreateQuestionFacade {
 
+    @Qualifier("createRepositoryGateway")
     private final RepositoryGateway repositoryGateway;
     private final AddQuestionDtoMapper addQuestionDtoMapper;
     private final AddAnswerDtoMapper addAnswerDtoMapper;

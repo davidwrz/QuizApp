@@ -3,7 +3,8 @@ package au.davidwrz.quizapp.modules.question.find.domain;
 import au.davidwrz.quizapp.modules.question.create.domain.Question;
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "findAnswer")
+@Table(name = "answer")
 public class Answer {
 
     @Id

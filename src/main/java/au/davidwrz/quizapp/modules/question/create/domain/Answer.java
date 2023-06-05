@@ -2,7 +2,8 @@ package au.davidwrz.quizapp.modules.question.create.domain;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "createAnswer")
+@Table(name = "answer")
 public class Answer {
 
     @Id

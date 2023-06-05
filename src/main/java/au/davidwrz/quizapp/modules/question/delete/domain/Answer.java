@@ -2,7 +2,8 @@ package au.davidwrz.quizapp.modules.question.delete.domain;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "delelteAnswer")
+@Table(name = "answer")
 public class Answer {
 
     @Id
