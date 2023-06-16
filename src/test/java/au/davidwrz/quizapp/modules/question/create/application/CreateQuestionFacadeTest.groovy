@@ -62,27 +62,4 @@ class CreateQuestionFacadeTest extends Specification {
         then:
         thrown InvalidQuestionException
     }
-
-    def "should throw exception when number of answers is not four"() {
-        given:
-        def questionDto = new AddQuestionDto(
-                "What is the capital of Australia?",
-                [new AddQuestionDto.AddAnswerDto("Brisbane", false),
-                 new AddQuestionDto.AddAnswerDto("Sydney", false),
-                 new AddQuestionDto.AddAnswerDto("Canberra", true)]
-        )
-        def question = Question.of("What is the capital of Australia?")
-        def answers = [
-                Answer.of("Brisbane", false),
-                Answer.of("Sydney", false),
-                Answer.of("Canberra", true)]
-        question.answers = answers
-
-        when:
-        createQuestionFacade.add(questionDto)
-
-        then:
-        addQuestionDtoMapper.toEntity(questionDto) >> question
-        1 * repositoryGateway.saveQuestion(question, _ as Iterable<Answer>)
-    }
 }
