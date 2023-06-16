@@ -8,7 +8,7 @@ import spock.lang.Specification
 class CreateQuestionFacadeTest extends Specification {
 
     def repositoryGateway = Mock(RepositoryGateway)
-    def addQuestionDtoMapper = Mock(AddQuestionDtoMapper)
+    def addQuestionDtoMapper = new AddQuestionDtoMapper()
     def addAnswerDtoMapper = new AddAnswerDtoMapper()
     def createQuestionFacade = new CreateQuestionFacade(repositoryGateway, addQuestionDtoMapper, addAnswerDtoMapper)
 
@@ -34,8 +34,7 @@ class CreateQuestionFacadeTest extends Specification {
         createQuestionFacade.add(questionDto)
 
         then:
-        addQuestionDtoMapper.toEntity(questionDto) >> question
-        1 * repositoryGateway.saveQuestion(question, _ as Iterable<Answer>)
+        1 * repositoryGateway.saveQuestion(_ as Question, _ as Iterable<Answer>)
     }
 
     def "should throw exception when no answer is correct"() {
