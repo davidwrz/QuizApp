@@ -18,10 +18,7 @@ class AnswerChecker {
     }
 
     private static List<String> getAnswers(AnswerQuestionDto answerQuestionDto) {
-        return answerQuestionDto.answers
-                .stream()
-                .map(AnswerQuestionDto.Answer::content)
-                .toList();
+        return answerQuestionDto.getAnswers();
     }
 
     private List<String> getCorrectAnswers(Question question) {
