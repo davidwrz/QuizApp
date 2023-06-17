@@ -1,6 +1,6 @@
 package au.davidwrz.quizapp.modules.question.answer.application;
 
-public record AnswerResult(Result message) {
+public record AnswerResult(Result result) {
 
     public static AnswerResult of(boolean equalAnswers) {
         if (equalAnswers) {

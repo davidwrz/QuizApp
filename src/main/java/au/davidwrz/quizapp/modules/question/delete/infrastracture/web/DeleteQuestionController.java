@@ -18,7 +18,7 @@ class DeleteQuestionController {
         this.service = service;
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> deleteQuestionById(@PathVariable Integer id) {
         service.deleteQuestion(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

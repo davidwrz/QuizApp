@@ -8,7 +8,7 @@ public class AnswerQuestionDto {
 
     public List<String> getAnswers() {
         return answers.stream()
-                .map(String::valueOf)
+                .map(Answer::content)
                 .toList();
     }
 
