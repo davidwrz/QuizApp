@@ -1,6 +1,6 @@
 package au.davidwrz.quizapp.modules.quiz.create.domain;
 
-enum Type {
+public enum Type {
     SPORTS,
     SCIENCE,
     HISTORY,

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class RepositoryGateway {
 
     private final AnswerRepository answerRepository;
-    @Qualifier("createQuestionRepository")
+    @Qualifier("CREATE_QUESTION_QUESTION_REPOSITORY")
     private final QuestionRepository questionRepository;
 
     private RepositoryGateway(AnswerRepository answerRepository, QuestionRepository questionRepository) {
