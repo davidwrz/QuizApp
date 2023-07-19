@@ -35,6 +35,10 @@ public class Question {
         return answers;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
