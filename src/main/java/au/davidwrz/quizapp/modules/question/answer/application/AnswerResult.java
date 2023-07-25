@@ -10,8 +10,7 @@ public record AnswerResult(Result result) {
         }
 
     }
-
-    private enum Result {
+     public enum Result {
         CORRECT("Congratulations! Correct answer!"), FALSE("Wrong! Please try again!");
 
         Result(String message) {

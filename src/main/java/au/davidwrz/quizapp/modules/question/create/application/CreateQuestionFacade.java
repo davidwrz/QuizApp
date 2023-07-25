@@ -26,7 +26,7 @@ public class CreateQuestionFacade {
     }
 
     public void add(AddQuestionDto questionDto) {
-        if (!isOnlyOneAnswerTrue(questionDto)) {
+        if (!isAtLeastOneAnswerTrue(questionDto)) {
             throw new InvalidQuestionException("At least one answer has to be correct!");
         }
         Question question = addQuestionDtoMapper.toEntity(questionDto);
@@ -39,7 +39,7 @@ public class CreateQuestionFacade {
         repositoryGateway.saveQuestion(question, answers);
     }
 
-    private boolean isOnlyOneAnswerTrue(AddQuestionDto questionDto) {
+    private boolean isAtLeastOneAnswerTrue(AddQuestionDto questionDto) {
         return questionDto.getAnswers().stream()
                 .anyMatch(AddQuestionDto.AddAnswerDto::correct);
     }
