@@ -28,5 +28,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
+      - name: Run database migrations
+        run: |
+            mvn flyway:migrate -Dflyway.url=jdbc:postgresql://localhost:5432/postgres -Dflyway.user=davidwrz -Dflyway.password=password -Dflyway.locations=filesystem:src/main/resources/db/migration
       - name: Build and run Unit and Integration Tests with Maven
         run: mvn -ntp -B verify
