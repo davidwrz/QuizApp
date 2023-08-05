@@ -11,6 +11,10 @@
 	<groupId>au.davidwrz</groupId>
 	<artifactId>QuizApp</artifactId>
 	<version>1.0.0</version>
+	<organization>
+		<name>davidwrz</name>
+		<url>https://davidwrz.com</url>
+	</organization>
 	<name>QuizApp</name>
 	<description>QuizApp</description>
 	<properties>
@@ -158,6 +162,11 @@
 						<include>**/*IT*.java</include>
 					</includes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.3.1</version>
 			</plugin>
 		</plugins>
 	</build>
