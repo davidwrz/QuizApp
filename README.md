@@ -34,34 +34,24 @@ The Quiz Application is built using the following technologies:
 - Docker
 - AWS
 - CI/CD (GitHub Actions)
+- Swagger
 
 ## How to Run the Project
 
-Follow the steps below to run the Quiz Application locally:
+Build the Docker image
 
-### Prerequisites
-
-- Java Development Kit (JDK) 17 or higher installed
-- MySQL database installed and running
-- Docker installed (optional, for Docker setup)
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/your-username/quiz-application.git
-cd quiz-application
+```
+docker pull davidwrz/quizapp:latest
 ```
 
-# Build the Docker image
+Run the Docker container
 
-docker build -t quiz-app .
+```
+docker run -p 8080:8080 -d quizapp
+```
 
-# Run the Docker container
-
-docker run -p 8080:8080 -d quiz-app
 The application will be available at http://localhost:8080.
 
 # Contact
 
 If you have any questions or feedback please feel free to reach out to me at wrzosdawid95@gmail.com.
-Thank you and all the best!
