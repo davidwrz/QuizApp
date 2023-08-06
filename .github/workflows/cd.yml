@@ -1,10 +1,7 @@
 name: CD
 
 on:
-  workflow_dispatch:
   pull_request:
-    branches:
-      - devops
 
 jobs:
   deploy:
