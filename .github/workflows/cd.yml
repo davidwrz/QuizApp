@@ -46,15 +46,10 @@ jobs:
       - name: Push Image to Docker Hub
         run: docker push davidwrz/quizapp
 
-#      - uses: akhileshns/heroku-deploy@v3.12.14
-#        with:
-#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#          heroku_app_name: "quizappdavidwrz"
-#          heroku_email: "your-heroku-email"${{secrets.HEROKU_EMAIL}}
-#          docker_image_name: "davidwrz/quizapp"
-
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_ACCESS_TOKEN}}
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: 'quizappdavidwrz'
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          docker_image_name: "davidwrz/quizapp"
