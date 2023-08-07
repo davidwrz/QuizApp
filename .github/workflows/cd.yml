@@ -46,6 +46,12 @@ jobs:
       - name: Push Image to Docker Hub
         run: docker push davidwrz/quizapp
 
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
