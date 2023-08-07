@@ -1,11 +1,10 @@
 name: CD - Deployment on Heroku
 
 on:
-  #  workflow_dispatch:
-  #  push:
-  #    branches:
-  #      - develop
-  pull_request:
+  workflow_dispatch:
+    push:
+      branches:
+        - develop
 
 jobs:
   deploy:
@@ -52,4 +51,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: 'quizappdavidwrz'
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
           docker_image_name: "davidwrz/quizapp"
