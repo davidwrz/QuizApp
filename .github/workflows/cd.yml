@@ -1,10 +1,9 @@
 name: CD - Deployment on Heroku
 
 on:
-  #  push:
-  #    branches:
-  #      - develop
-  pull_request:
+  push:
+    branches:
+      - develop
 
 jobs:
   deploy:
@@ -44,12 +43,3 @@ jobs:
 
       - name: Push Image to Docker Hub
         run: docker push davidwrz/quizapp
-
-#      - name: Deploy to Heroku
-#        uses: akhileshns/heroku-deploy@v3.12.14
-#        with:
-#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#          heroku_app_name: 'quizappdavidwrz'
-#          heroku_email: ${{secrets.HEROKU_EMAIL}}
-#          usedocker: true
-#          docker_image_name: "davidwrz/quizapp"
