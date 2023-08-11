@@ -1,11 +1,13 @@
 package au.davidwrz.quizapp.modules.user.register.application;
 
 import au.davidwrz.quizapp.modules.user.exists.application.ExistsUserFacade;
-import au.davidwrz.quizapp.modules.user.register.application.security.JWTUtil;
+import au.davidwrz.quizapp.security.JWTUtil;
 import au.davidwrz.quizapp.modules.user.register.domain.User;
 import au.davidwrz.quizapp.modules.user.register.infrastructure.db.RepositoryGateway;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class RegisterUserFacade {
@@ -16,7 +18,10 @@ public class RegisterUserFacade {
     private final RegisterUserMapper registerUserMapper;
     private final JWTUtil jwtUtil;
 
-    public RegisterUserFacade(RepositoryGateway repositoryGateway, ExistsUserFacade existsUserFacade, RegisterUserMapper registerUserMapper, JWTUtil jwtUtil) {
+    public RegisterUserFacade(RepositoryGateway repositoryGateway,
+                              ExistsUserFacade existsUserFacade,
+                              RegisterUserMapper registerUserMapper,
+                              JWTUtil jwtUtil) {
         this.repositoryGateway = repositoryGateway;
         this.existsUserFacade = existsUserFacade;
         this.registerUserMapper = registerUserMapper;
@@ -24,11 +29,16 @@ public class RegisterUserFacade {
     }
 
     public String register(RegisterUserDto userDto) {
-        if (existsUserFacade.existsUser(userDto.name())) {
-            throw new AlreadyRegisteredUserException(userDto.name());
+        String name = userDto.name();
+        if (existsUserFacade.existsUser(name)) {
+            throw new AlreadyRegisteredUserException(name);
         }
         User user = registerUserMapper.toEntity(userDto);
         repositoryGateway.registerUser(user);
-        return jwtUtil.issueToken("username", "ROLE_USER");
+        return jwtUtil.issueToken(name, "ROLE_USER");
+    }
+
+    public Optional<User> findUserByName(String name) {
+        return repositoryGateway.findUserByName(name);
     }
 }

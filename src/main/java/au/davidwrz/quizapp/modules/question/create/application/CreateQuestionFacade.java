@@ -3,6 +3,7 @@ package au.davidwrz.quizapp.modules.question.create.application;
 import au.davidwrz.quizapp.modules.question.create.domain.Answer;
 import au.davidwrz.quizapp.modules.question.create.domain.Question;
 import au.davidwrz.quizapp.modules.question.create.infrastracture.db.RepositoryGateway;
+import au.davidwrz.quizapp.modules.user.register.domain.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class CreateQuestionFacade {
         this.addAnswerDtoMapper = addAnswerDtoMapper;
     }
 
-    public void add(AddQuestionDto questionDto) {
+    public void add(AddQuestionDto questionDto, User user ) {
         if (!isAtLeastOneAnswerTrue(questionDto)) {
             throw new InvalidQuestionException("At least one answer has to be correct!");
         }

@@ -2,9 +2,12 @@ package au.davidwrz.quizapp.modules.question.create.infrastracture.web;
 
 import au.davidwrz.quizapp.modules.question.create.application.AddQuestionDto;
 import au.davidwrz.quizapp.modules.question.create.application.CreateQuestionFacade;
+import au.davidwrz.quizapp.modules.user.register.domain.User;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +22,9 @@ class AddQuestionController {
 
     @PostMapping
     ResponseEntity<?> addQuestion(@Valid @RequestBody AddQuestionDto addQuestionDto) {
-        service.add(addQuestionDto);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        service.add(addQuestionDto, user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

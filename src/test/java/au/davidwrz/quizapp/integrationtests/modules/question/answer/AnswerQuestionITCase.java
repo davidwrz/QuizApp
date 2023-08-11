@@ -1,5 +1,6 @@
 package au.davidwrz.quizapp.integrationtests.modules.question.answer;
 
+import au.davidwrz.quizapp.integrationtests.user.register.RegisterUserHelper;
 import au.davidwrz.quizapp.modules.question.answer.application.AnswerResult;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +14,7 @@ import reactor.core.publisher.Mono;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 
@@ -35,6 +37,7 @@ class AnswerQuestionITCase {
         webTestClient.post()
                 .uri(ANSWER_QUESTION_URL)
                 .accept(MediaType.APPLICATION_JSON)
+                .header(AUTHORIZATION, RegisterUserHelper.getJwtToken(webTestClient))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(jsonRequest), String.class)
                 .exchange()

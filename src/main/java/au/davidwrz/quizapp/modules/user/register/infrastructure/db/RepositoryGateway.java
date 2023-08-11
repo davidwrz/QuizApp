@@ -1,11 +1,15 @@
 package au.davidwrz.quizapp.modules.user.register.infrastructure.db;
 
 import au.davidwrz.quizapp.modules.user.register.domain.User;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service("createUserRepositoryGateway")
+import java.util.Optional;
+
+@Service("registerUserRepositoryGateway")
 public class RepositoryGateway {
 
+    @Qualifier("registerUserRepository")
     private final UserRepository repository;
 
     RepositoryGateway(UserRepository repository) {
@@ -14,5 +18,9 @@ public class RepositoryGateway {
 
     public void registerUser(User user) {
         repository.save(user);
+    }
+
+    public Optional<User> findUserByName(String name) {
+        return repository.findByName(name);
     }
 }

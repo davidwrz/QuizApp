@@ -1,5 +1,6 @@
-package au.davidwrz.quizapp.modules.user.register.application.security;
+package au.davidwrz.quizapp.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -34,7 +35,31 @@ public class JWTUtil {
                 .compact();
     }
 
+    public String getSubject(String token) {
+        return getClaims(token).getSubject();
+    }
+
+    private Claims getClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    }
+
+    public boolean isTokenValid(String jwt, String name) {
+        return getSubject(jwt)
+                .equals(name)
+                && !isTokenExpired(jwt);
+    }
+
+    private boolean isTokenExpired(String jwt) {
+        return getClaims(jwt)
+                .getExpiration()
+                .before(Date.from(Instant.now()));
     }
 }

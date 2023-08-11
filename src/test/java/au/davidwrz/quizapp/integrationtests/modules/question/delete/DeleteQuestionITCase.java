@@ -1,5 +1,6 @@
 package au.davidwrz.quizapp.integrationtests.modules.question.delete;
 
+import au.davidwrz.quizapp.integrationtests.user.register.RegisterUserHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,6 +9,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.BEFORE_TEST_METHOD;
 
@@ -25,6 +27,7 @@ class DeleteQuestionITCase {
     void shouldCreateQuestion() {
         webTestClient.delete()
                 .uri(DELETE_QUESTION_URL)
+                .header(AUTHORIZATION, RegisterUserHelper.getJwtToken(webTestClient))
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()

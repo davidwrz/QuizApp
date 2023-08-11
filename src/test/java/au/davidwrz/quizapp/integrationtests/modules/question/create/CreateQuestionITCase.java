@@ -1,5 +1,6 @@
 package au.davidwrz.quizapp.integrationtests.modules.question.create;
 
+import au.davidwrz.quizapp.integrationtests.user.register.RegisterUserHelper;
 import au.davidwrz.quizapp.modules.question.create.application.AddQuestionDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,9 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.*;
-import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.*;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class CreateQuestionITCase {
@@ -36,6 +38,7 @@ class CreateQuestionITCase {
         webTestClient.post()
                 .uri(CREATE_QUESTION_URL)
                 .accept(MediaType.APPLICATION_JSON)
+                .header(AUTHORIZATION, RegisterUserHelper.getJwtToken(webTestClient))
                 .body(Mono.just(question), AddQuestionDto.class)
                 .exchange()
                 .expectStatus()
