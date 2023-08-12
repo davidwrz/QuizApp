@@ -25,6 +25,8 @@ class AnswerQuestionITCase {
     private WebTestClient webTestClient;
     @Autowired
     private ObjectMapper objectMapper;
+    @Autowired
+    private RegisterUserHelper registerUserHelper;
 
     private static final String ANSWER_QUESTION_URL = "/api/v1/questions/1/solve";
 
@@ -37,7 +39,7 @@ class AnswerQuestionITCase {
         webTestClient.post()
                 .uri(ANSWER_QUESTION_URL)
                 .accept(MediaType.APPLICATION_JSON)
-                .header(AUTHORIZATION, RegisterUserHelper.getJwtToken(webTestClient))
+                .header(AUTHORIZATION, registerUserHelper.getJwtToken(webTestClient))
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(jsonRequest), String.class)
                 .exchange()

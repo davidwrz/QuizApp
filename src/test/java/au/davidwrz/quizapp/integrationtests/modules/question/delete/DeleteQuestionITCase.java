@@ -18,6 +18,8 @@ class DeleteQuestionITCase {
 
     @Autowired
     private WebTestClient webTestClient;
+    @Autowired
+    private RegisterUserHelper registerUserHelper;
 
     private static final String DELETE_QUESTION_URL = "/api/v1/questions/1";
 
@@ -27,7 +29,7 @@ class DeleteQuestionITCase {
     void shouldCreateQuestion() {
         webTestClient.delete()
                 .uri(DELETE_QUESTION_URL)
-                .header(AUTHORIZATION, RegisterUserHelper.getJwtToken(webTestClient))
+                .header(AUTHORIZATION, registerUserHelper.getJwtToken(webTestClient))
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()

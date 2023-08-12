@@ -21,6 +21,8 @@ class CreateQuestionITCase {
 
     @Autowired
     private WebTestClient webTestClient;
+    @Autowired
+    private RegisterUserHelper registerUserHelper;
 
     private static final String CREATE_QUESTION_URL = "/api/v1/questions";
 
@@ -38,7 +40,7 @@ class CreateQuestionITCase {
         webTestClient.post()
                 .uri(CREATE_QUESTION_URL)
                 .accept(MediaType.APPLICATION_JSON)
-                .header(AUTHORIZATION, RegisterUserHelper.getJwtToken(webTestClient))
+                .header(AUTHORIZATION, registerUserHelper.getJwtToken(webTestClient))
                 .body(Mono.just(question), AddQuestionDto.class)
                 .exchange()
                 .expectStatus()
