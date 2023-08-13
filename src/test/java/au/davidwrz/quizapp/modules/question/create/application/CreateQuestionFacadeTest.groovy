@@ -31,7 +31,7 @@ class CreateQuestionFacadeTest extends Specification {
         question.answers = answers
 
         when:
-        createQuestionFacade.add(questionDto)
+        createQuestionFacade.add(questionDto, null)
 
         then:
         1 * repositoryGateway.saveQuestion(_ as Question, _ as Iterable<Answer>)
@@ -56,7 +56,7 @@ class CreateQuestionFacadeTest extends Specification {
         question.answers = answers
 
         when:
-        createQuestionFacade.add(questionDto)
+        createQuestionFacade.add(questionDto, null)
 
         then:
         thrown InvalidQuestionException
