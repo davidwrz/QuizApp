@@ -1,7 +1,8 @@
 package au.davidwrz.quizapp.integrationtests.modules.question.create;
 
-import au.davidwrz.quizapp.integrationtests.user.register.RegisterUserHelper;
+import au.davidwrz.quizapp.integrationtests.helpers.RegisterUserHelper;
 import au.davidwrz.quizapp.modules.question.create.application.AddQuestionDto;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +26,12 @@ class CreateQuestionITCase {
     private RegisterUserHelper registerUserHelper;
 
     private static final String CREATE_QUESTION_URL = "/api/v1/questions";
+    private String jwt;
+
+    @BeforeEach
+    void registerUser() {
+        jwt = registerUserHelper.getJwtToken(webTestClient);
+    }
 
     @Test
     @Sql(scripts = {"/db/integrationtests/deleteData.sql"}, executionPhase = AFTER_TEST_METHOD)
@@ -40,7 +47,7 @@ class CreateQuestionITCase {
         webTestClient.post()
                 .uri(CREATE_QUESTION_URL)
                 .accept(MediaType.APPLICATION_JSON)
-                .header(AUTHORIZATION, registerUserHelper.getJwtToken(webTestClient))
+                .header(AUTHORIZATION, jwt)
                 .body(Mono.just(question), AddQuestionDto.class)
                 .exchange()
                 .expectStatus()

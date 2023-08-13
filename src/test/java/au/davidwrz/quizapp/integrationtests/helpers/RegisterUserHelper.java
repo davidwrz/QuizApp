@@ -1,4 +1,4 @@
-package au.davidwrz.quizapp.integrationtests.user.register;
+package au.davidwrz.quizapp.integrationtests.helpers;
 
 import au.davidwrz.quizapp.modules.user.register.application.RegisterUserDto;
 import org.springframework.http.MediaType;
@@ -14,7 +14,7 @@ public class RegisterUserHelper {
     private final String REGISTER_USER_URL = "/api/v1/register";
 
     public String getJwtToken(WebTestClient webTestClient) {
-            RegisterUserDto user = new RegisterUserDto("testuser", "TestPassword1!");
+        RegisterUserDto user = new RegisterUserDto("testuser", "TestPassword1!");
         String jwt = webTestClient.post()
                 .uri(REGISTER_USER_URL)
                 .accept(MediaType.APPLICATION_JSON)
@@ -26,5 +26,14 @@ public class RegisterUserHelper {
                 .get(0);
 
         return String.format("Bearer %s", jwt);
+    }
+
+    public void registerUser(WebTestClient webTestClient, String name, String password) {
+        RegisterUserDto user = new RegisterUserDto(name, password);
+        webTestClient.post()
+                .uri(REGISTER_USER_URL)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(user), RegisterUserDto.class)
+                .exchange();
     }
 }

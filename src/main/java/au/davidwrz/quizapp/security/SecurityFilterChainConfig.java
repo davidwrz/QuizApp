@@ -32,7 +32,7 @@ class SecurityFilterChainConfig {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, "api/v1/register").permitAll()
+                .requestMatchers(HttpMethod.POST, "api/v1/register", "api/v1/auth/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

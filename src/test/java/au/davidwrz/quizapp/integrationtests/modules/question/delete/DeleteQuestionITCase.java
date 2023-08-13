@@ -1,6 +1,7 @@
 package au.davidwrz.quizapp.integrationtests.modules.question.delete;
 
-import au.davidwrz.quizapp.integrationtests.user.register.RegisterUserHelper;
+import au.davidwrz.quizapp.integrationtests.helpers.RegisterUserHelper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,12 @@ class DeleteQuestionITCase {
     private RegisterUserHelper registerUserHelper;
 
     private static final String DELETE_QUESTION_URL = "/api/v1/questions/1";
+    private String jwt;
+
+    @BeforeEach
+    void registerUser() {
+        jwt = registerUserHelper.getJwtToken(webTestClient);
+    }
 
     @Test
     @Sql(scripts = {"/db/integrationtests/createQuestion.sql"}, executionPhase = BEFORE_TEST_METHOD)
@@ -29,7 +36,7 @@ class DeleteQuestionITCase {
     void shouldCreateQuestion() {
         webTestClient.delete()
                 .uri(DELETE_QUESTION_URL)
-                .header(AUTHORIZATION, registerUserHelper.getJwtToken(webTestClient))
+                .header(AUTHORIZATION, jwt)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()
