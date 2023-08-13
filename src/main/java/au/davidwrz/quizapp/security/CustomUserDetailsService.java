@@ -15,8 +15,6 @@ class CustomUserDetailsService implements UserDetailsService {
         this.registerUserFacade = registerUserFacade;
     }
 
-
-
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         return registerUserFacade
