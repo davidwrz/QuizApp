@@ -1,6 +1,6 @@
 package au.davidwrz.quizapp.modules.external.opentdb.question.infrastructure.web;
 
-import au.davidwrz.quizapp.modules.external.opentdb.question.domain.GenerateQuestion;
+import au.davidwrz.quizapp.modules.external.opentdb.question.domain.QuestionGenerator;
 import au.davidwrz.quizapp.modules.external.opentdb.question.application.QuestionDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("api/v1/external/opentdb")
-class GenerateQuestionController {
+class GenerateExternalQuestionController {
 
-    private final GenerateQuestion generateQuestion;
+    private final QuestionGenerator questionGenerator;
 
-    GenerateQuestionController(GenerateQuestion generateQuestion) {
-        this.generateQuestion = generateQuestion;
+    GenerateExternalQuestionController(QuestionGenerator questionGenerator) {
+        this.questionGenerator = questionGenerator;
     }
 
     @GetMapping("/generate")
     ResponseEntity<QuestionDto> generateQuestion() {
-        return ResponseEntity.status(HttpStatus.OK).body(generateQuestion.generate());
+        return ResponseEntity.status(HttpStatus.OK).body(questionGenerator.generate());
     }
 }
