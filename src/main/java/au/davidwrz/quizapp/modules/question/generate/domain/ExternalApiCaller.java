@@ -22,7 +22,7 @@ class ExternalApiCaller {
         return webClient.get()
                 .uri(GENERATE_QUESTION_URL)
                 .accept(APPLICATION_JSON)
-                .header(AUTHORIZATION,String.format("Bearer %s", token))
+                .header(AUTHORIZATION, String.format("Bearer %s", token))
                 .retrieve()
                 .bodyToMono(GenerateQuestionDto.class)
                 .block();

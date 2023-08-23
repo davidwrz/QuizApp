@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-class QuestionMapper {
+public class QuestionMapper {
 
     Question mapQuestion(au.davidwrz.quizapp.modules.question.find.domain.Question question) {
         return Question.of(question.getContent(), mapAnswer(question.getAnswers()));

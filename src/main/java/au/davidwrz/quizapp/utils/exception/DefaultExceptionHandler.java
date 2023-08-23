@@ -43,6 +43,12 @@ public class DefaultExceptionHandler {
         return new ErrorResponse(e.getMessage());
     }
 
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleException(RuntimeException e) {
+        return new ErrorResponse(e.getMessage());
+    }
+
     public record ErrorResponse(String message) {
     }
 }

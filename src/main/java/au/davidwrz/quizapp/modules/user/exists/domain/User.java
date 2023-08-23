@@ -3,7 +3,7 @@ package au.davidwrz.quizapp.modules.user.exists.domain;
 import jakarta.persistence.*;
 
 @Entity(name = "existsUser")
-@Table(name = "user",schema = "public")
+@Table(name = "user", schema = "public")
 public class User {
 
     @Id

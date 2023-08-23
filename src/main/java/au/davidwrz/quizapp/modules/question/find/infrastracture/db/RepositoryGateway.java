@@ -4,7 +4,7 @@ import au.davidwrz.quizapp.modules.question.find.domain.Question;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("findQuestionRepositoryGateway")
 public class RepositoryGateway {
 
     @Qualifier("findQuestionRepository")

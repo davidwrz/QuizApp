@@ -1,6 +1,7 @@
 package au.davidwrz.quizapp.modules.external.opentdb.question.application;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class QuestionDto {

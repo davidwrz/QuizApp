@@ -4,6 +4,7 @@ public class Answer {
 
     private String content;
     private boolean correct;
+
     public Answer() {
     }
 
