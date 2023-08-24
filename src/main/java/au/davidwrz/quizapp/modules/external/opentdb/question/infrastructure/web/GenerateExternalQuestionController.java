@@ -1,7 +1,7 @@
 package au.davidwrz.quizapp.modules.external.opentdb.question.infrastructure.web;
 
-import au.davidwrz.quizapp.modules.external.opentdb.question.domain.QuestionGenerator;
 import au.davidwrz.quizapp.modules.external.opentdb.question.application.QuestionDto;
+import au.davidwrz.quizapp.modules.external.opentdb.question.domain.QuestionGenerator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

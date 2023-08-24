@@ -5,7 +5,7 @@ import au.davidwrz.quizapp.utils.mapper.EntityMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-class AddQuestionDtoMapper implements EntityMapper<Question,AddQuestionDto> {
+class AddQuestionDtoMapper implements EntityMapper<Question, AddQuestionDto> {
 
     @Override
     public Question toEntity(AddQuestionDto addQuestionDto) {

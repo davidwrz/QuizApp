@@ -1,13 +1,13 @@
-package au.davidwrz.quizapp.modules.question.answer.application;
+package au.davidwrz.quizapp.modules.question.answer.domain;
 
-import au.davidwrz.quizapp.modules.question.answer.domain.Answer;
-import au.davidwrz.quizapp.modules.question.answer.domain.Question;
+import au.davidwrz.quizapp.modules.question.answer.application.AnswerQuestionDto;
+import au.davidwrz.quizapp.modules.question.answer.application.AnswerResult;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-class AnswerChecker {
+public class AnswerChecker {
 
     AnswerResult checkAnswer(Question question, AnswerQuestionDto answerQuestionDto) {
         List<String> correctAnswers = getCorrectAnswers(question);

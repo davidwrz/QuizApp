@@ -26,7 +26,7 @@ public class CreateQuestionFacade {
         this.addAnswerDtoMapper = addAnswerDtoMapper;
     }
 
-    public void add(AddQuestionDto questionDto, User user ) {
+    public void add(AddQuestionDto questionDto, User user) {
         if (!isAtLeastOneAnswerTrue(questionDto)) {
             throw new InvalidQuestionException("At least one answer has to be correct!");
         }

@@ -1,9 +1,9 @@
 package au.davidwrz.quizapp.modules.user.register.application;
 
 import au.davidwrz.quizapp.modules.user.exists.application.ExistsUserFacade;
-import au.davidwrz.quizapp.security.JWTUtil;
 import au.davidwrz.quizapp.modules.user.register.domain.User;
 import au.davidwrz.quizapp.modules.user.register.infrastructure.db.RepositoryGateway;
+import au.davidwrz.quizapp.security.JWTUtil;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
