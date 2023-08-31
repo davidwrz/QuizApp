@@ -117,7 +117,9 @@ The Quiz Application is built using the following technologies and tools:
 
 
 - **Swagger**  
-  I put in a considerable amount of effort to accurately replicate a real project within its authentic environment.
+  I utilized Swagger to streamline documentation and facilitate easy exploration of project endpoints. 
+  This decision aims for example to simplify frontend implementation by providing an interactive
+  Swagger UI documentation accessible at http://localhost:8080/swagger-ui/index.html
 
 ## How to Run the Project
 
