@@ -33,6 +33,7 @@ class SecurityFilterChainConfig {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "api/v1/register", "api/v1/auth/login").permitAll()
+                .requestMatchers("api-docs/**", "swagger-ui/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
