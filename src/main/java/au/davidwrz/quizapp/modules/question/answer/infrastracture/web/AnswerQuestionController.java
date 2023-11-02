@@ -10,7 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/questions")
+@RequestMapping("api/v1/question")
 class AnswerQuestionController {
 
     private final AnswerQuestionFacade service;
