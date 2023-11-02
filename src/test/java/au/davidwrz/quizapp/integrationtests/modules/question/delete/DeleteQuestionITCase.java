@@ -22,7 +22,7 @@ class DeleteQuestionITCase {
     @Autowired
     private RegisterUserHelper registerUserHelper;
 
-    private static final String DELETE_QUESTION_URL = "/api/v1/questions/1";
+    private static final String DELETE_QUESTION_URL = "/api/v1/question/1";
     private String jwt;
 
     @BeforeEach

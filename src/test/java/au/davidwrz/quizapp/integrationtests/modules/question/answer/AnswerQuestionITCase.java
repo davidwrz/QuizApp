@@ -26,7 +26,7 @@ class AnswerQuestionITCase {
     @Autowired
     private RegisterUserHelper registerUserHelper;
 
-    private static final String ANSWER_QUESTION_URL = "/api/v1/questions/1/solve";
+    private static final String ANSWER_QUESTION_URL = "/api/v1/question/1/solve";
     private String jwt;
 
     @BeforeEach

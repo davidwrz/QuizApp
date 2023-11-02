@@ -25,7 +25,7 @@ class CreateQuestionITCase {
     @Autowired
     private RegisterUserHelper registerUserHelper;
 
-    private static final String CREATE_QUESTION_URL = "/api/v1/questions";
+    private static final String CREATE_QUESTION_URL = "/api/v1/question";
     private String jwt;
 
     @BeforeEach

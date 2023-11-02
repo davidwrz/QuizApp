@@ -16,7 +16,7 @@ class GenerateQuestionITCase {
     @Autowired
     private WebTestClient webTestClient;
 
-    private static final String GENERATE_QUESTION_URL = "/api/v1/questions/generate";
+    private static final String GENERATE_QUESTION_URL = "/api/v1/question/generate";
 
     @Test
     @Sql(scripts = {"/db/integrationtests/deleteData.sql"}, executionPhase = AFTER_TEST_METHOD)
